@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 
 public class ConsultAPI {
 
-    public String dataObtain(String url) throws InterruptedException {
+    public String dataObtain(String url)  {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
