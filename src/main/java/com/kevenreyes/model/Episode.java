@@ -47,6 +47,13 @@ public class Episode {
         return episodeNum;
     }
 
+    public String getTitle() {
+        return title;
+    }
+    public double  getEvaluate() {
+        return evaluate;
+    }
+
     @Override
     public String toString() {
         return "season" + seasonNum + ", title: " + title + "episode: " + episodeNum + "evaluate: "
