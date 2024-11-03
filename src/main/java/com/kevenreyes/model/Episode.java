@@ -35,6 +35,18 @@ public class Episode {
 
     }
 
+    public LocalDate getRealeaseDate() {
+        return releaseDate;
+    }
+
+    public int getSeason() {
+        return seasonNum;
+    }
+
+    public int getEpisode() {
+        return episodeNum;
+    }
+
     @Override
     public String toString() {
         return "season" + seasonNum + ", title: " + title + "episode: " + episodeNum + "evaluate: "

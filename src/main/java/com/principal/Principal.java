@@ -1,5 +1,7 @@
 package com.principal;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -45,11 +47,7 @@ public class Principal {
 
         }
 
-        // dataSeasons.forEach(System.out::println);
         System.out.println("-------------------EPISODE LIST-----------------------");
-        // dataSeasons.forEach(t -> t.episodes().forEach(e ->
-        // System.out.println(e.title())));
-
         // Datas information list episode
 
         List<EspisodeData> espisodeData = dataSeasons.stream().flatMap(t -> t.episodes().stream())
@@ -65,7 +63,22 @@ public class Principal {
 
         // Data type episode
         List<Episode> episode = dataSeasons.stream()
-                .flatMap(t -> t.episodes().stream().map(d -> new Episode(t.numberSeason(), d))).collect(Collectors.toList());
+                .flatMap(t -> t.episodes().stream().map(d -> new Episode(t.numberSeason(), d)))
+                .collect(Collectors.toList());
+
+        System.out.println("----------------------------------DATE FIND-----------------------------");
+        System.out.println("Please indicate the date on which you would like to search for your favorite series");
+
+        var year = write.nextInt();
+        write.nextLine();
+
+        LocalDate dateFind = LocalDate.of(year, 1, 1);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        episode.stream().filter(e -> e.getRealeaseDate() != null && e.getRealeaseDate().isAfter(dateFind))
+                .forEach(e -> System.out
+                        .println("Season: " + e.getSeason() + " Episode: " + e.getEpisode() + " Release date: "
+                                + e.getRealeaseDate().format(dtf)));
     }
 
 }
