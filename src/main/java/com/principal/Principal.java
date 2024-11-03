@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import com.kevenreyes.model.DataSeason;
+import com.kevenreyes.model.Episode;
 import com.kevenreyes.model.EspisodeData;
 import com.kevenreyes.model.SeriesData;
 import com.kevenreyes.services.ConsultAPI;
@@ -58,8 +59,13 @@ public class Principal {
 
         System.out.println("Top five episodes");
 
-        espisodeData.stream().filter(e->!e.evaluation().equalsIgnoreCase("N/A")).sorted(Comparator.comparing(EspisodeData::evaluation).reversed()).limit(5)
+        espisodeData.stream().filter(e -> !e.evaluation().equalsIgnoreCase("N/A"))
+                .sorted(Comparator.comparing(EspisodeData::evaluation).reversed()).limit(5)
                 .forEach(System.out::println);
+
+        // Data type episode
+        List<Episode> episode = dataSeasons.stream()
+                .flatMap(t -> t.episodes().stream().map(d -> new Episode(t.numberSeason(), d))).collect(Collectors.toList());
     }
 
 }
