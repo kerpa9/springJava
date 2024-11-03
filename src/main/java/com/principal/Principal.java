@@ -28,7 +28,7 @@ public class Principal {
         String url = URL_BASE + nameSerie + ApiKey;
         var json = consultAPI.dataObtain(url);
         var data = dataConverter.obtainData(json, SeriesData.class);
-        System.out.println(json);
+        System.out.println(data);
 
         List<DataSeason> dataSeasons = new ArrayList<>();
         for (int i = 1; i <= data.totalTemp(); i++) {
