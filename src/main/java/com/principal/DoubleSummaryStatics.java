@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package com.principal;
+// package com.principal;
 
 
-class DoubleSummaryStatics {
+// class DoubleSummaryStatics {
 
-}
+// }
